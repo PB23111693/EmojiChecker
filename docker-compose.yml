@@ -1,0 +1,25 @@
+# 可选部署形态。演示与开发默认直接运行 Python 与 Vite，不依赖 Docker。
+# 使用前复制 .env.example 为 .env 并填写 SECRET_KEY、AI_SERVICE_KEY。
+#
+#   docker compose up -d --build
+#   docker compose exec backend python scripts/seed_demo.py --reset
+#
+# 首次启动后访问 http://127.0.0.1:8000
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+    image: se-emoji-checker:latest
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: sqlite:///./data/se_emoji.db
+      AUTO_CREATE_TABLES: "true"
+      TZ: Asia/Shanghai
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

@@ -1,0 +1,10 @@
+"""测试基座：把 ai-worker 目录加入导入路径。"""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+WORKER_DIR = Path(__file__).resolve().parents[1]
+if str(WORKER_DIR) not in sys.path:
+    sys.path.insert(0, str(WORKER_DIR))

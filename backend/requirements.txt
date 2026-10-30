@@ -1,0 +1,12 @@
+fastapi==0.141.1
+uvicorn[standard]==0.52.2
+# uvicorn 的 WebSocket 实现依赖，显式锁定避免系统包缺省时退化为纯 HTTP
+websockets==17.3
+SQLAlchemy==2.0.45
+pydantic==2.12.5
+argon2-cffi==25.1.0
+PyJWT==2.15.1
+
+# 测试与开发依赖
+pytest==9.1.1
+httpx==0.28.1

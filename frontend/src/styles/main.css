@@ -1,0 +1,376 @@
+:root {
+  --brand: #2f6f5e;
+  --brand-soft: #e8f2ef;
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --line: #e4e8ec;
+  --warn: #c2410c;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 6px 16px rgba(16, 24, 40, 0.04);
+
+  --el-color-primary: #2f6f5e;
+  --el-color-primary-light-3: #5b9382;
+  --el-color-primary-light-5: #87b0a3;
+  --el-color-primary-light-7: #b3cdc4;
+  --el-color-primary-light-8: #c9dbd4;
+  --el-color-primary-light-9: #e8f2ef;
+  --el-border-radius-base: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100%;
+}
+
+.app-aside {
+  width: 220px;
+  flex: 0 0 220px;
+  background: var(--surface);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.brand {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.brand-sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.app-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  height: 60px;
+  padding: 0 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.app-content {
+  padding: 24px;
+  flex: 1;
+}
+
+.page {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.page-sub {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+}
+
+.panel + .panel {
+  margin-top: 16px;
+}
+
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.panel-hint {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.metric-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.metric {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.metric-value {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+.metric-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 16px;
+}
+
+.emotion-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (min-width: 720px) {
+  .emotion-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+.emotion-chip {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 14px 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s ease, transform 0.15s ease, background 0.15s ease;
+  font: inherit;
+  color: inherit;
+}
+
+.emotion-chip:hover {
+  border-color: var(--brand);
+  transform: translateY(-1px);
+}
+
+.emotion-chip.is-active {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  box-shadow: inset 0 0 0 1px var(--brand);
+}
+
+.emotion-icon {
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.emotion-name {
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.emotion-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.empty-hint {
+  padding: 28px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stack-8 > * + * {
+  margin-top: 8px;
+}
+
+.stack-16 > * + * {
+  margin-top: 16px;
+}
+
+.auth-wrap {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  background: var(--surface);
+}
+
+.auth-brand {
+  padding: 56px 56px 40px;
+  background: linear-gradient(160deg, #2f6f5e 0%, #245448 55%, #1d3f37 100%);
+  color: #eef5f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.auth-brand h1 {
+  font-size: 30px;
+  line-height: 1.35;
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+.auth-brand p {
+  margin: 0;
+  color: #cfe2dc;
+  font-size: 14px;
+  max-width: 420px;
+}
+
+.auth-brand ul {
+  margin: 24px 0 0;
+  padding-left: 18px;
+  color: #cfe2dc;
+  font-size: 13px;
+}
+
+.auth-brand li + li {
+  margin-top: 8px;
+}
+
+.auth-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-card h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.auth-card .sub {
+  margin: 0 0 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.auth-foot {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.demo-accounts {
+  margin-top: 24px;
+  padding: 12px 14px;
+  background: #fbfcfd;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.chart-box {
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .app-aside {
+    display: none;
+  }
+
+  .app-content {
+    padding: 16px;
+  }
+
+  .auth-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-brand {
+    display: none;
+  }
+}

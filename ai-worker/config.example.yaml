@@ -1,0 +1,35 @@
+# AI 推理进程配置样例。复制为 config.yaml 后修改，config.yaml 不提交仓库。
+
+# 后端地址，末尾不带斜杠
+api_base: http://127.0.0.1:8000
+
+# 服务密钥与设备标识。也可用环境变量 AI_SERVICE_KEY、AI_DEVICE_ID 覆盖。
+# 密钥必须与后端 .env 的 AI_SERVICE_KEY 一致，不得使用用户令牌。
+service_key: ""
+device_id: demo-device-01
+
+# 绑定的课堂。课堂必须处于进行中，否则进程等待或退出。
+session_id: 1
+
+# 模型版本写入数据库，便于追溯。修改模型时同步修改。
+model_version: opencv-zoo-fer-2022july
+
+# 模型路径，相对本目录
+detector_model: models/face_detection_yunet_2026may.onnx
+expression_model: models/facial_expression_recognition_mobilefacenet_2022july.onnx
+
+# 输入。camera_index 与 video_path 二选一，video_path 非空时优先使用回放。
+camera_index: 0
+video_path: null
+replay_loop: true
+
+# 采样与过滤。threshold 为 null 时使用课堂配置的阈值。
+sample_interval: 3.0
+threshold: null
+max_faces: 5
+min_face_pixels: 48
+
+# 界面与日志
+display: true
+log_level: INFO
+log_file: logs/ai-worker.log
