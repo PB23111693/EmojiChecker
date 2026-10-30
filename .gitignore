@@ -1,5 +1,6 @@
 # 环境与密钥
 .env
+.env.*
 *.env
 !.env.example
 *.key
@@ -16,13 +17,24 @@ venv/
 *.egg-info/
 htmlcov/
 .coverage
+.coverage.*
+coverage/
+coverage.xml
 
 # 数据与日志
 data/
 *.db
 *.db-wal
 *.db-shm
+*.db-journal
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
 *.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.sqlite3-journal
 logs/
 *.log
 
@@ -34,6 +46,9 @@ dist/
 
 # AI 本地配置、日志与模型：配置可能含服务密钥，模型体积较大
 ai-worker/config.yaml
+ai-worker/config.yml
+ai-worker/config.local.yaml
+ai-worker/config.local.yml
 ai-worker/logs/
 ai-worker/models/*.onnx
 ai-worker/models/*.yml
