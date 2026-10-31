@@ -36,18 +36,52 @@ export const SOURCE_LABEL = {
   AI: 'AI'
 }
 
-export function formatDateTime(value) {
-  if (!value) return '—'
+// 页面与课堂编辑统一使用北京时间，不能依赖浏览器或操作系统的默认时区。
+const dateTimeFormatter = new Intl.DateTimeFormat('en-CA', {
+  timeZone: 'Asia/Shanghai',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hourCycle: 'h23'
+})
+
+function dateTimeParts(value) {
+  if (!value) return null
   const date = new Date(value)
-  if (Number.isNaN(date.getTime())) return '—'
-  const pad = (num) => String(num).padStart(2, '0')
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`
+  if (Number.isNaN(date.getTime())) return null
+  return Object.fromEntries(
+    dateTimeFormatter.formatToParts(date).map(({ type, value }) => [type, value])
+  )
+}
+
+export function formatDateTime(value) {
+  const parts = dateTimeParts(value)
+  if (!parts) return '—'
+  return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute}`
 }
 
 export function formatTimeRange(start, end) {
-  const s = new Date(start)
-  const e = new Date(end)
-  const pad = (num) => String(num).padStart(2, '0')
-  const date = `${s.getMonth() + 1}月${s.getDate()}日`
-  return `${date} ${pad(s.getHours())}:${pad(s.getMinutes())} 至 ${pad(e.getHours())}:${pad(e.getMinutes())}`
+  const s = dateTimeParts(start)
+  const e = dateTimeParts(end)
+  if (!s || !e) return '—'
+  const sameDay = s.year === e.year && s.month === e.month && s.day === e.day
+  const startDate = `${Number(s.month)}月${Number(s.day)}日`
+  const endDate = sameDay ? '' : `${Number(e.month)}月${Number(e.day)}日 `
+  return `${startDate} ${s.hour}:${s.minute} 至 ${endDate}${e.hour}:${e.minute}`
+}
+
+export function formatDateTimeInput(value) {
+  const parts = dateTimeParts(value)
+  if (!parts) return null
+  return `${parts.year}-${parts.month}-${parts.day} ${parts.hour}:${parts.minute}:${parts.second}`
+}
+
+export function toApiDateTime(value) {
+  // 日期选择器返回北京时间的墙上时间，显式附加偏移后再转换为接口所用的 UTC。
+  const date = new Date(`${value.replace(' ', 'T')}+08:00`)
+  if (Number.isNaN(date.getTime())) throw new Error('课堂时间格式不正确')
+  return date.toISOString()
 }

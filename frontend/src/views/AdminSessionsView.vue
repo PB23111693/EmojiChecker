@@ -4,7 +4,7 @@
       <div>
         <h1 class="page-title">课程与课堂</h1>
         <p class="page-sub">
-          课堂开始后时间、名单与阈值冻结；名单表示提交资格，不代表出勤。
+          课堂时间统一使用北京时间（UTC+8）；课堂开始后时间、名单与阈值冻结。
         </p>
       </div>
       <el-button type="primary" :disabled="!currentCourse" @click="openSessionDialog()">
@@ -123,6 +123,7 @@
           <el-date-picker
             v-model="sessionForm.start_at"
             type="datetime"
+            value-format="YYYY-MM-DD HH:mm:ss"
             placeholder="选择开始时间"
             style="width: 100%"
           />
@@ -131,6 +132,7 @@
           <el-date-picker
             v-model="sessionForm.end_at"
             type="datetime"
+            value-format="YYYY-MM-DD HH:mm:ss"
             placeholder="选择结束时间"
             style="width: 100%"
           />

@@ -65,11 +65,8 @@ export function useDashboard() {
   )
 
   function shortTime(value) {
-    const date = new Date(value)
-    const pad = (num) => String(num).padStart(2, '0')
-    return `${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(
-      date.getMinutes()
-    )}`
+    const formatted = formatDateTime(value)
+    return formatted === '—' ? formatted : formatted.slice(5)
   }
 
   async function loadSessions() {

@@ -35,6 +35,7 @@ DEMO_PASSWORD = "Emoji@2026"
 ADMIN_PASSWORD = "Admin@2026"
 DEVICE_ID = "demo-device-01"
 MODEL_VERSION = "fer-onnx-1.0"
+DISPLAY_TIMEZONE = dt.timezone(dt.timedelta(hours=8))
 
 
 def _user(username: str, role: Role, password: str) -> User:
@@ -103,13 +104,14 @@ def refresh_demo_times() -> None:
                     _set(item, now - dt.timedelta(days=2), now - dt.timedelta(days=2) + dt.timedelta(hours=2))
 
         db.commit()
-        print("演示课堂时间已按当前时刻刷新。")
+        print("演示课堂时间已按当前时刻刷新（北京时间 UTC+08:00）。")
         for item in (
             db.query(ClassSession).order_by(ClassSession.id).all()
         ):
             print(
                 f"  id={item.id} {item.class_name} "
-                f"{item.start_at:%Y-%m-%d %H:%M} 至 {item.end_at:%H:%M}"
+                f"{item.start_at.astimezone(DISPLAY_TIMEZONE):%Y-%m-%d %H:%M} 至 "
+                f"{item.end_at.astimezone(DISPLAY_TIMEZONE):%Y-%m-%d %H:%M}"
             )
     finally:
         db.close()

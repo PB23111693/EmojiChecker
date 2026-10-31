@@ -11,6 +11,7 @@ import {
   updateSession
 } from '@/api/catalog'
 import { listUsers } from '@/api/admin'
+import { formatDateTimeInput, toApiDateTime } from '@/stores/dict'
 
 /**
  * 管理端课程与课堂页的页面控制器。
@@ -118,8 +119,8 @@ export function createSessionController() {
       sessionForm.id = row.id
       sessionForm.class_name = row.class_name
       sessionForm.room = row.room || ''
-      sessionForm.start_at = new Date(row.start_at)
-      sessionForm.end_at = new Date(row.end_at)
+      sessionForm.start_at = formatDateTimeInput(row.start_at)
+      sessionForm.end_at = formatDateTimeInput(row.end_at)
       sessionForm.ai_threshold = Number(row.ai_threshold)
     } else {
       sessionForm.id = null
@@ -144,8 +145,8 @@ export function createSessionController() {
     const payload = {
       class_name: sessionForm.class_name.trim(),
       room: sessionForm.room.trim() || null,
-      start_at: new Date(sessionForm.start_at).toISOString(),
-      end_at: new Date(sessionForm.end_at).toISOString(),
+      start_at: toApiDateTime(sessionForm.start_at),
+      end_at: toApiDateTime(sessionForm.end_at),
       ai_threshold: sessionForm.ai_threshold
     }
     submitting.value = true
