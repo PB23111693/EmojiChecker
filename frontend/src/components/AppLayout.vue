@@ -45,6 +45,7 @@ import {
   ArrowDown,
   Calendar,
   DataAnalysis,
+  Document,
   Setting,
   Tickets,
   User,
@@ -68,12 +69,15 @@ const MENU_BY_ROLE = {
   ],
   TEACHER: [
     { path: '/teacher/dashboard', label: '课堂看板', icon: DataAnalysis },
+    { path: '/teacher/statistics', label: '多维统计', icon: DataAnalysis },
     { path: '/profile', label: '个人设置', icon: Setting }
   ],
   ADMIN: [
+    { path: '/teacher/dashboard', label: '课堂看板', icon: DataAnalysis },
     { path: '/admin/statistics', label: '多维统计', icon: DataAnalysis },
     { path: '/admin/sessions', label: '课程与课堂', icon: Calendar },
     { path: '/admin/users', label: '用户管理', icon: User },
+    { path: '/admin/records', label: '记录明细', icon: Document },
     { path: '/admin/audit', label: '审计日志', icon: Tickets },
     { path: '/profile', label: '个人设置', icon: Setting }
   ]

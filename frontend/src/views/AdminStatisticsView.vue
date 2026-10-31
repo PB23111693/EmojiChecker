@@ -7,7 +7,12 @@
           按课程、班级与时间范围汇总。导出使用与当前查询完全相同的筛选条件。
         </p>
       </div>
-      <el-button :loading="exporting" :disabled="total === 0" @click="exportFile">
+      <el-button
+        v-if="isAdmin"
+        :loading="exporting"
+        :disabled="total === 0"
+        @click="exportFile"
+      >
         导出 CSV
       </el-button>
     </div>
@@ -91,7 +96,10 @@
 import { computed, onMounted } from 'vue'
 import ChartBox from '@/components/ChartBox.vue'
 import { createStatisticsController } from '@/controllers/statisticsController'
+import { authStore } from '@/stores/auth'
 import { EMOTIONS } from '@/stores/dict'
+
+const isAdmin = computed(() => authStore.user?.role === 'ADMIN')
 
 // 页面控制器负责筛选、查询与导出，View 只保留图表配置与模板。
 const {

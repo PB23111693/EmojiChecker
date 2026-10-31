@@ -44,6 +44,16 @@ const routes = [
         meta: { roles: ['ADMIN'], title: '多维统计' }
       },
       {
+        path: 'teacher/statistics',
+        component: () => import('@/views/AdminStatisticsView.vue'),
+        meta: { roles: ['TEACHER'], title: '多维统计' }
+      },
+      {
+        path: 'admin/records',
+        component: () => import('@/views/AdminRecordsView.vue'),
+        meta: { roles: ['ADMIN'], title: '记录明细' }
+      },
+      {
         path: 'admin/sessions',
         component: () => import('@/views/AdminSessionsView.vue'),
         meta: { roles: ['ADMIN'], title: '课程与课堂' }

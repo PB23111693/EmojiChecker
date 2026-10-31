@@ -169,3 +169,12 @@ def test_participants_respects_user_and_source_filters(client, seed):
     assert ai.status_code == 200
     assert ai.json()["data"]["total"] == 0
     assert ai.json()["data"]["participants"] == 0
+
+
+def test_teacher_can_access_classes_and_statistics(client, seed):
+    """FR08 教师可使用多维统计与班级候选，但导出仍仅管理员。"""
+    headers = auth_headers(client, "teacher_a")
+    assert client.get("/api/v1/admin/classes", headers=headers).status_code == 200
+    stats = client.get("/api/v1/statistics", headers=headers)
+    assert stats.status_code == 200
+    assert client.get("/api/v1/admin/emoji/export", headers=headers).status_code == 403

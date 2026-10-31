@@ -6,7 +6,7 @@
 
 | 部分 | 状态 | 说明 |
 | --- | --- | --- |
-| 后端 | 可运行 | FastAPI 分层结构，51 项自动化测试通过 |
+| 后端 | 可运行 | FastAPI 分层结构，52 项自动化测试通过 |
 | Web 前端 | 可运行 | Vue 3 + Element Plus + ECharts，构建产物由后端托管 |
 | 桌面客户端 | 可运行 | tkinter，登录、选课、提交、历史、改密 |
 | AI 推理进程 | 可运行 | YuNet + 表情 ONNX，回放输入已实测入库 |
@@ -115,7 +115,7 @@ Copy-Item config.example.yaml config.yaml
 
 ```powershell
 cd backend
-..\.venv\Scripts\python.exe -m pytest          # 51 项后端与接口测试
+..\.venv\Scripts\python.exe -m pytest          # 52 项后端与接口测试
 
 cd ..\ai-worker
 ..\.venv\Scripts\python.exe -m pytest          # 20 项 AI 单元测试
@@ -175,3 +175,4 @@ docs/            需求、设计、接口、测试、部署、手册、报告与
 | `docs/09-结题报告.md` | 完成情况、关键实现、实测与局限 |
 | `docs/10-演示视频脚本与提交清单.md` | 录制流程与提交检查 |
 | `docs/11-分工与贡献表.md` | 成员信息与贡献填写模板 |
+| `docs/12-验收对照与人工核验手册.md` | 指导书逐项对照、M01 至 M20 人工核验步骤 |
