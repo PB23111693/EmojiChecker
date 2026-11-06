@@ -270,7 +270,7 @@ AI 新增记录通知使用 `{"type":"emoji.created","session_id":6,"source":"AI
 ### 7.2 健康检查与在线文档
 
 - `GET /health` 无需认证，不加业务前缀，直接返回 `{status, env, database}`，不套业务响应。
-- `/docs` 提供 Swagger 调试，`/redoc` 提供只读文档，`/openapi.json` 返回机器可读接口定义；仓库保存的契约为 [openapi.json](openapi.json)。
+- `/docs` 提供 Swagger 调试，`/redoc` 提供只读文档，`/openapi.json` 返回机器可读接口定义。
 
 ### 7.3 已提供的兼容路径
 
