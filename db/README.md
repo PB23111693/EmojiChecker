@@ -42,4 +42,4 @@ DATABASE_URL=mysql+pymysql://se_emoji:change_me@127.0.0.1:3306/se_emoji?charset=
 | `emoji_records` | 手动与 AI 表情记录 | 事件 ID 唯一；用户、课堂、时间片联合唯一；来源形状检查 |
 | `audit_logs` | 关键操作审计 | 结果枚举检查；操作者可为空 |
 
-完整字段与索引见 `schema_mysql.sql`，ER 图与统计口径见 `docs/03-概要设计说明书.md` 与 `docs/04-数据库设计说明书.md`。
+完整字段与索引见 `schema_mysql.sql`，ER 图与统计口径见 `../submission/概要设计.md` 与 `../submission/数据库设计.md`。

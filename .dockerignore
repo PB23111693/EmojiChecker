@@ -15,5 +15,4 @@ __pycache__
 ai-worker/models/*.onnx
 ai-worker/logs
 desktop-client
-docs
 交付材料

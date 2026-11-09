@@ -1,7 +1,7 @@
 -- 表情符号课堂情绪检查器系统 MySQL 8 建表脚本
 -- 由 SQLAlchemy 模型生成，字段、索引与约束与 backend/app/models 保持一致。
 -- 开发与演示默认使用 SQLite（AUTO_CREATE_TABLES=true 时自动建表）；
--- 本脚本用于可选部署形态，未在 MySQL 上完成全量回归，详见 docs/07-部署说明.md。
+-- 本脚本用于可选部署形态，未在 MySQL 上完成全量回归，详见 ../submission/部署说明与用户手册.md。
 --
 -- 用法：
 --   mysql -u root -p -e "CREATE DATABASE se_emoji CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;"
